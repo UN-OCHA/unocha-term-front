@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Adds theme suggestion for taxonomy edit forms.
+ */
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function unocha_term_front_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  $route_match = \Drupal::routeMatch();
+
+  if ($term = $route_match->getParameter('taxonomy_term')) {
+    // Needed for revision paths.
+    if (is_numeric($term)) {
+      return;
+    }
+    else {
+      switch ($hook) {
+        case 'html':
+          $suggestions[] = 'html__taxonomy__term__edit__' . $term->bundle();
+          break;
+
+        case 'page':
+          $suggestions[] = 'page__taxonomy__term__edit__' . $term->bundle();
+          break;
+
+        case 'form':
+          if ($route_match->getRouteName() === 'entity.taxonomy_term.delete_form') {
+            $suggestions[] = 'form--taxonomy-term-delete-form';
+          }
+
+          if ($route_match->getRouteName() === 'entity.taxonomy_term.edit_form') {
+            $suggestions[] = 'form--taxonomy-term-form';
+          }
+
+          \Drupal::logger('vars')->notice(print_r(array_keys($variables['element']), TRUE));
+          \Drupal::logger('vars')->notice(print_r($variables['element']['#form_id'], TRUE));
+
+          break;
+
+      }
+    }
+  }
+}
