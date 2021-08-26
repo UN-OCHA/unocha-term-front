@@ -1,0 +1,9 @@
+{
+    "name": "unocha/unocha-term-front",
+    "description": "Use the frontend theme to create, edit and delete vocabulary terms.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-only",
+    "require": {
+        "composer/installers": "^1.2"
+    }
+}
