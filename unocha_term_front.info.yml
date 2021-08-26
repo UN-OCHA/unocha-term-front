@@ -1,0 +1,4 @@
+type: module
+name: UNOCHA Term Front
+description: 'Use the frontend theme to create, edit and delete vocabulary terms.'
+core_version_requirement: ^8|^9

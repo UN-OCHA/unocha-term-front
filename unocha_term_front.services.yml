@@ -1,0 +1,5 @@
+services:
+  unocha_term_front.route_subscriber:
+    class: Drupal\unocha_term_front\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
