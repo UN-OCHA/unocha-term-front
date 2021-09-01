@@ -35,9 +35,6 @@ function unocha_term_front_theme_suggestions_alter(array &$suggestions, array $v
             $suggestions[] = 'form--taxonomy-term-form';
           }
 
-          \Drupal::logger('vars')->notice(print_r(array_keys($variables['element']), TRUE));
-          \Drupal::logger('vars')->notice(print_r($variables['element']['#form_id'], TRUE));
-
           break;
 
       }
